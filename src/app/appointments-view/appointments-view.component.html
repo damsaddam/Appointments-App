@@ -1,0 +1,121 @@
+<div class="container-fluid pt-2">
+  <div class="d-flex justify-content-center">
+    <button
+      type="button"
+      class="btn btn-outline-light"
+      matTooltip="Add Appointment"
+      aria-label="Button that displays a tooltip when focused or hovered over"
+      matTooltipPosition="before"
+      matTooltipClass="danger-tooltip"
+      (click)="openForm()"
+    >
+      <i class="bi bi-person-fill-add"></i>
+    </button>
+  </div>
+  <mat-form-field class="pt-2">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="E.g., John Doe"
+      #input
+    />
+  </mat-form-field>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="appointmentTitle">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Appointment Title
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.appointmentTitle }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="appointmentDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Appointment Date
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <ng-container *ngIf="row.appointmentDate; else dashTemplate">
+            {{ row.appointmentDate | date }}
+          </ng-container>
+          <ng-template #dashTemplate>
+            <b>-</b>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="appointmentDateRange">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Appointment Date Range
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.appointmentDateRange.startDate | date }} <b>-</b>
+          {{ row.appointmentDateRange.endDate | date }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="appointmentTime">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Appointment Time
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.appointmentTime }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="appointmentDescription">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Appointment Description
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.appointmentDescription }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="bi bi-gear-wide-connected"></i>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <button
+            class="edit"
+            matTooltip="Edit"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            matTooltipPosition="above"
+            matTooltipClass="edit-tooltip"
+            (click)="editList(row)"
+          >
+            <i class="bi bi-pen"></i>
+          </button>
+          <button
+            class="delete"
+            matTooltip="Delete"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            matTooltipPosition="above"
+            matTooltipClass="delete-tooltip"
+            (click)="confirmDelete(row.id)"
+          >
+            <i class="bi bi-trash2"></i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 25, 50, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <h2 class="text-center" mat-dialog-title>Appointments Form</h2>
+  <form [formGroup]="calendarForm" (ngSubmit)="formSubmit()">
+    <div mat-dialog-content>
+      <mat-form-field class="mt-3" appearance="outline">
+        <mat-label>Appointment Title</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="appointmentTitle"
+          placeholder="E.g., Meeting"
+        />
+        <mat-error
+          class="text-center"
+          *ngIf="calendarForm.get('appointmentTitle')?.hasError('required')"
+        >
+          <strong>Please enter the appointment title</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mb-3" appearance="outline">
+        <mat-label>Appointment Date</mat-label>
+        <input
+          matInput
+          formControlName="appointmentDate"
+          [matDatepicker]="picker1"
+          placeholder="Click a calendar icon on the right"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="mb-3" appearance="outline">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input
+          [rangePicker]="rangePicker"
+          formGroupName="appointmentDateRange"
+          separator="until"
+        >
+          <input
+            matStartDate
+            placeholder="Start date"
+            formControlName="startDate"
+          />
+          <input matEndDate placeholder="End date" formControlName="endDate" />
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY until MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="rangePicker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker class="mb-2" touchUi #rangePicker>
+          <mat-date-range-picker-actions>
+            <button mat-button matDateRangePickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDateRangePickerApply>
+              Apply
+            </button>
+          </mat-date-range-picker-actions>
+        </mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Appointment Time</mat-label>
+        <input
+          [ngxTimepicker]="picker"
+          type="text"
+          matInput
+          formControlName="appointmentTime"
+          placeholder="Click to set the time"
+          [format]="12"
+        />
+        <ngx-material-timepicker
+          [ESC]="true"
+          [minutesGap]="15"
+          #picker
+        ></ngx-material-timepicker>
+        <mat-error
+          class="text-center"
+          *ngIf="calendarForm.get('appointmentTime')?.hasError('required')"
+        >
+          <strong>Please enter the appointment time</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Appointment Description</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="appointmentDescription"
+          placeholder="E.g., Meeting to discuss about the team"
+        />
+        <mat-error
+          class="text-center"
+          *ngIf="
+            calendarForm.get('appointmentDescription')?.hasError('required')
+          "
+        >
+          <strong>Please enter the appointment description</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="action d-flex justify-content-center">
+      <button
+        type="button"
+        class="btn btn-outline-warning"
+        [mat-dialog-close]="false"
+      >
+        Cancel
+      </button>
+      <button
+        [disabled]="calendarForm.invalid"
+        type="submit"
+        class="btn btn-outline-info"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

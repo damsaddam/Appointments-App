@@ -1,0 +1,138 @@
+.mat-mdc-dialog-title {
+    font-family: 'Rubik Scribble', system-ui;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 23px;
+    letter-spacing: 2px;
+    padding: 0;
+    margin: 0;
+}
+
+form *,
+input,
+input::placeholder {
+    width: 100%;
+}
+
+.action {
+    padding: 0 39px 10px 25px;
+    margin: 0;
+    gap: 10px;
+}
+
+button {
+    padding: 3 20px;
+    flex: 1;
+    font-weight: 700;
+    margin: 0;
+}
+
+button.btn.btn-outline-warning {
+    color: #dca708 !important;
+    letter-spacing: 1.5px;
+}
+
+button.btn.btn-outline-warning:hover {
+    background-color: #dca708 !important;
+    color: black !important;
+}
+
+button.btn.btn-outline-info {
+    color: #0aaccd !important;
+    letter-spacing: 1.5px;
+}
+
+button.btn.btn-outline-info:hover {
+    background-color: #0aaccd !important;
+    color: black !important;
+}
+
+::ng-deep .mat-calendar-table-header th {
+    font-size: 20px !important;
+    font-weight: 1000 !important;
+    font-family: 'Rubik Scribble', system-ui;
+    background-color: transparent;
+}
+
+::ng-deep .timepicker-overlay {
+    z-index: 9999999 !important;
+}
+::ng-deep .timepicker-backdrop-overlay {
+    z-index: 9999999 !important;
+}
+
+/* Responsive breakpoints */
+
+/* Small screens (phones) */
+@media only screen and (max-width: 600px) {
+    .container-fluid {
+        width: 320px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mat-mdc-radio-button~.mat-mdc-radio-button {
+        margin-left: 2px;
+    }
+
+    .action {
+        padding: 0 25px 10px 25px;
+        margin: 0;
+        gap: 10px;
+    }
+
+    button {
+        padding: 3 20px;
+        flex: 1;
+        font-weight: 700;
+        margin: 0;
+    }
+}
+
+/* Medium screens (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .container-fluid {
+        width: 500px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mat-mdc-radio-button~.mat-mdc-radio-button {
+        margin-left: 10px;
+    }
+
+    .action {
+        padding: 0 23px 10px 25px;
+        margin: 0;
+        gap: 10px;
+    }
+
+    button {
+        padding: 3 20px;
+        flex: 1;
+        font-weight: 700;
+        margin: 0;
+    }
+}
+
+/* Large screens (desktops) */
+@media only screen and (min-width: 1025px) {
+    .container-fluid {
+        width: 700px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .action {
+        padding: 0 23px 10px 25px;
+        margin: 0;
+        gap: 10px;
+    }
+
+    button {
+        padding: 3 20px;
+        flex: 1;
+        font-weight: 700;
+        margin: 0;
+    }
+}

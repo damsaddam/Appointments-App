@@ -1,0 +1,191 @@
+<div class="container-fluid">
+  <div class="container-form d-flex justify-content-center pt-0 mt-0">
+    <form [formGroup]="scheduleForm">
+      <mat-form-field class="form-width mt-3" appearance="outline">
+        <mat-label>Schedule Name</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="item"
+          placeholder="E.g., Meeting"
+        />
+        <mat-icon matSuffix>schedule</mat-icon>
+        <mat-hint>Enter the schedule name</mat-hint>
+        <mat-error
+          class="text-center"
+          *ngIf="scheduleForm.get('item')?.hasError('required')"
+        >
+          <strong>Please enter the shedule name</strong>
+        </mat-error>
+      </mat-form-field>
+      <button
+        *ngIf="!isEditEnabled"
+        (click)="addScheduler()"
+        class="form-width mt-1 btn btn-outline-info"
+        [disabled]="scheduleForm.invalid"
+        type="button"
+      >
+        Add Schedule
+      </button>
+      <button
+        *ngIf="isEditEnabled"
+        (click)="updateScheduler()"
+        class="form-width mt-1 btn btn-outline-warning"
+        [disabled]="scheduleForm.invalid"
+        type="button"
+      >
+        Update Schedule
+      </button>
+    </form>
+  </div>
+
+  <div class="container mt-4" cdkDropListGroup>
+    <div class="row">
+      <div class="col">
+        <!-- Schedule List -->
+        <div class="example-container">
+          <h2 class="text-center">
+            Schedule List
+            <span *ngIf="scheduleList.length > 0">
+              - {{ scheduleList.length }}</span
+            >
+          </h2>
+
+          <div
+            cdkDropList
+            [cdkDropListData]="scheduleList"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+            id="cdk-drop-list-1"
+          >
+            <div
+              class="example-box"
+              *ngFor="let item of scheduleList; let i = index"
+              cdkDrag
+            >
+              {{ item.description }}
+              <div class="action">
+                <button
+                  (click)="onEditSchedule(item, i)"
+                  type="button"
+                  class="btn"
+                  matTooltip="Edit"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                  matTooltipPosition="above"
+                  matTooltipClass="danger-tooltip"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  (click)="deleteScheduler(i)"
+                  type="button"
+                  class="btn"
+                  matTooltip="Delete"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                  matTooltipPosition="above"
+                  matTooltipClass="danger-tooltip"
+                >
+                  <i class="bi bi-trash2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <!-- Schedule In Progress -->
+        <div class="example-container">
+          <h2 class="text-center">
+            Schedule In Progress
+            <span *ngIf="scheduleInProgress.length > 0">
+              - {{ scheduleInProgress.length }}</span
+            >
+          </h2>
+
+          <div
+            cdkDropList
+            [cdkDropListData]="scheduleInProgress"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+            id="cdk-drop-list-2"
+          >
+            <div
+              class="example-box"
+              *ngFor="let item of scheduleInProgress; let i = index"
+              cdkDrag
+            >
+              {{ item.description }}
+              <div class="action">
+                <button
+                  (click)="deleteInProgress(i)"
+                  type="button"
+                  class="btn"
+                  matTooltip="Delete"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                  matTooltipPosition="above"
+                  matTooltipClass="danger-tooltip"
+                >
+                  <i class="bi bi-trash2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <!-- Schedule Done -->
+        <div class="example-container">
+          <h2 class="text-center">
+            Schedule Done<span *ngIf="scheduleDone.length > 0">
+              - {{ scheduleDone.length }}</span
+            >
+          </h2>
+
+          <div
+            cdkDropList
+            [cdkDropListData]="scheduleDone"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+            id="cdk-drop-list-3"
+          >
+            <div
+              class="example-box"
+              *ngFor="let item of scheduleDone; let i = index"
+              cdkDrag
+            >
+              {{ item.description }}
+              <div class="action">
+                <button
+                  (click)="deleteDone(i)"
+                  type="button"
+                  class="btn"
+                  matTooltip="Delete"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                  matTooltipPosition="above"
+                  matTooltipClass="danger-tooltip"
+                >
+                  <i class="bi bi-trash2"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn"
+                  matTooltip="Congratulations!"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                  matTooltipPosition="above"
+                  matTooltipClass="danger-tooltip"
+                >
+                  <i
+                    class="bi bi-check2-circle"
+                    style="color: rgb(0, 255, 0)"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

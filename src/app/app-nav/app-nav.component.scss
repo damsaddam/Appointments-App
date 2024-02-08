@@ -1,0 +1,26 @@
+::ng-deep .mat-toolbar-row,
+.mat-toolbar-single-row {
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 23px;
+  letter-spacing: 2px;
+  font-family: 'Rubik Scribble', system-ui;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
