@@ -2,7 +2,7 @@
   <div class="container-form d-flex justify-content-center pt-0 mt-0">
     <form [formGroup]="scheduleForm">
       <mat-form-field class="form-width mt-3" appearance="outline">
-        <mat-label>Schedule Name</mat-label>
+        <mat-label>Appointment Title</mat-label>
         <input
           type="text"
           matInput
@@ -10,12 +10,12 @@
           placeholder="E.g., Meeting"
         />
         <mat-icon matSuffix>schedule</mat-icon>
-        <mat-hint>Enter the schedule name</mat-hint>
+        <mat-hint>Enter the appointment title</mat-hint>
         <mat-error
           class="text-center"
           *ngIf="scheduleForm.get('item')?.hasError('required')"
         >
-          <strong>Please enter the shedule name</strong>
+          <strong>Please enter the appointment title</strong>
         </mat-error>
       </mat-form-field>
       <button
@@ -25,7 +25,7 @@
         [disabled]="scheduleForm.invalid"
         type="button"
       >
-        Add Schedule
+        Add
       </button>
       <button
         *ngIf="isEditEnabled"
@@ -34,7 +34,7 @@
         [disabled]="scheduleForm.invalid"
         type="button"
       >
-        Update Schedule
+        Update
       </button>
     </form>
   </div>
@@ -42,10 +42,10 @@
   <div class="container mt-4" cdkDropListGroup>
     <div class="row">
       <div class="col">
-        <!-- Schedule List -->
+        <!-- List -->
         <div class="example-container">
           <h2 class="text-center">
-            Schedule List
+            List
             <span *ngIf="scheduleList.length > 0">
               - {{ scheduleList.length }}</span
             >
@@ -94,10 +94,10 @@
       </div>
 
       <div class="col">
-        <!-- Schedule In Progress -->
+        <!-- In Progress -->
         <div class="example-container">
           <h2 class="text-center">
-            Schedule In Progress
+            In Progress
             <span *ngIf="scheduleInProgress.length > 0">
               - {{ scheduleInProgress.length }}</span
             >
@@ -135,10 +135,11 @@
       </div>
 
       <div class="col">
-        <!-- Schedule Done -->
+        <!-- Done -->
         <div class="example-container">
           <h2 class="text-center">
-            Schedule Done<span *ngIf="scheduleDone.length > 0">
+            Done
+            <span *ngIf="scheduleDone.length > 0">
               - {{ scheduleDone.length }}</span
             >
           </h2>

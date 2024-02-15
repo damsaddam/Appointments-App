@@ -1,50 +1,18 @@
 {
   "appointments": [
     {
-      "appointmentTitle": "Meeting only",
-      "appointmentDate": "2024-01-30T17:00:00.000Z",
+      "appointmentTitle": "Meeting",
+      "appointmentDate": "2024-02-14T17:00:00.000Z",
       "appointmentDateRange": {
         "startDate": null,
         "endDate": null
-      },
-      "appointmentTime": "12:00 AM",
-      "appointmentDescription": "Discuss about features",
-      "id": "ba1f"
-    },
-    {
-      "id": "789f",
-      "appointmentTitle": "Meeting",
-      "appointmentDate": "",
-      "appointmentDateRange": {
-        "startDate": "2023-12-31T17:00:00.000Z",
-        "endDate": "2024-01-30T17:00:00.000Z"
-      },
-      "appointmentDescription": "Discuss about interfaces"
-    },
-    {
-      "appointmentTitle": "Meeting",
-      "appointmentDate": null,
-      "appointmentDateRange": {
-        "startDate": "2024-01-02T17:00:00.000Z",
-        "endDate": "2024-01-23T17:00:00.000Z"
       },
       "appointmentTime": "1:00 PM",
       "appointmentDescription": "Discuss about buttons",
       "id": "42fa"
     },
     {
-      "appointmentTitle": "Meeting",
-      "appointmentDate": "2024-01-30T17:00:00.000Z",
-      "appointmentDateRange": {
-        "startDate": null,
-        "endDate": null
-      },
-      "appointmentTime": "8:30 AM",
-      "appointmentDescription": "Discuss about the table",
-      "id": "815b"
-    },
-    {
-      "appointmentTitle": "Meeting",
+      "appointmentTitle": "Build contents",
       "appointmentDate": "",
       "appointmentDateRange": {
         "startDate": "2024-01-27T17:00:00.000Z",
@@ -55,32 +23,32 @@
       "id": "04b1"
     },
     {
-      "appointmentTitle": "fdfdfd",
-      "appointmentDate": "2024-01-30T17:00:00.000Z",
+      "id": "5c49",
+      "appointmentTitle": "Build buttons",
+      "appointmentDate": "",
       "appointmentDateRange": {
-        "startDate": null,
-        "endDate": null
+        "startDate": "2024-02-14T17:00:00.000Z",
+        "endDate": "2024-02-21T17:00:00.000Z"
       },
-      "appointmentTime": "12:00 AM",
-      "appointmentDescription": "fdfdf",
-      "id": "8732"
+      "appointmentTime": "9:00 AM",
+      "appointmentDescription": "Build buttons according to the planned"
     }
   ],
   "scheduler": [
     {
-      "id": "d39a",
+      "id": "2cf4",
       "description": "Meeting",
       "status": "list"
     },
     {
-      "id": "6d18",
-      "description": "Work",
-      "status": "in-progress"
+      "id": "4890",
+      "description": "Build contents",
+      "status": "list"
     },
     {
-      "id": "6009",
-      "description": "Break time",
-      "status": "done"
+      "id": "3b43",
+      "description": "Build buttons",
+      "status": "list"
     }
   ]
 }

@@ -2,11 +2,11 @@
   <div class="d-flex justify-content-center">
     <button
       type="button"
-      class="btn btn-outline-light"
+      class="open btn btn-outline-light"
       matTooltip="Add Appointment"
       aria-label="Button that displays a tooltip when focused or hovered over"
       matTooltipPosition="before"
-      matTooltipClass="danger-tooltip"
+      matTooltipClass="tooltip"
       (click)="openForm()"
     >
       <i class="bi bi-person-fill-add"></i>
@@ -84,7 +84,7 @@
             matTooltip="Edit"
             aria-label="Button that displays a tooltip when focused or hovered over"
             matTooltipPosition="above"
-            matTooltipClass="edit-tooltip"
+            matTooltipClass="tooltip"
             (click)="editList(row)"
           >
             <i class="bi bi-pen"></i>
@@ -94,10 +94,20 @@
             matTooltip="Delete"
             aria-label="Button that displays a tooltip when focused or hovered over"
             matTooltipPosition="above"
-            matTooltipClass="delete-tooltip"
+            matTooltipClass="tooltip"
             (click)="confirmDelete(row.id)"
           >
             <i class="bi bi-trash2"></i>
+          </button>
+          <button
+            class="add"
+            matTooltip="Add to a scheduler for today"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            matTooltipPosition="above"
+            matTooltipClass="tooltip"
+            [routerLink]="['/scheduler', row.appointmentTitle]"
+          >
+            <i class="bi bi-plus-circle-dotted"></i>
           </button>
         </td>
       </ng-container>

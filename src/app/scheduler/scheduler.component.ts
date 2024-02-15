@@ -4,9 +4,10 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IScheduler } from './model/scheduler-interface';
 import { AppointmentsService } from '../services/appointments.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-appointments-scheduler',
@@ -22,12 +23,17 @@ export class SchedulerComponent implements OnInit {
   isEditEnabled: boolean = false;
   constructor(
     private fb: FormBuilder,
-    private schedulerService: AppointmentsService
+    private schedulerService: AppointmentsService,
+    private router: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    const appointmentTitle = this.router.snapshot.paramMap.get('appointmenttitle') /* in here asshole */
     this.scheduleForm = this.fb.group({
-      item: ['', Validators.required],
+      item: new FormControl(
+        { value: appointmentTitle, disabled: false },
+        { validators: [Validators.required] }
+      ),
     });
 
     this.loadScheduler();
@@ -63,21 +69,22 @@ export class SchedulerComponent implements OnInit {
     // Update only the description property
     const updatedSchedule: IScheduler = {
       ...originalSchedule,
-      description: this.scheduleForm.value.item
+      description: this.scheduleForm.value.item,
     };
 
-    this.schedulerService.updateScheduler(updatedSchedule.id, updatedSchedule)
+    this.schedulerService
+      .updateScheduler(updatedSchedule.id, updatedSchedule)
       .subscribe({
         next: () => {
           // Success
-          alert('Schedule updated successfully')
+          alert('Schedule updated successfully');
           this.loadScheduler();
           this.scheduleForm.reset();
           this.isEditEnabled = false;
         },
         error: (error) => {
           // Handle the error (e.g., show a message to the user)
-          alert('Updated failed')
+          alert('Updated failed');
         },
       });
   }
@@ -159,8 +166,10 @@ export class SchedulerComponent implements OnInit {
       status: status,
     };
 
-    this.schedulerService.updateScheduler(updatedSchedule.id, updatedSchedule).subscribe(() => {
-      this.loadScheduler();
-    });
+    this.schedulerService
+      .updateScheduler(updatedSchedule.id, updatedSchedule)
+      .subscribe(() => {
+        this.loadScheduler();
+      });
   }
 }

@@ -1,27 +1,17 @@
-button {
-    font-size: 16px;
+button.open i {
+    font-size: 20px;
 }
 
-.mat-column-action {
-    font-size: 18px;
-    background: #424242;
-    
-}
-
-button.edit {
-    border: 0px;
-    background: #424242;
-    color: white;
-}
-
-button.delete {
+button.edit,
+button.delete,
+button.add {
     border: 0px;
     background: #424242;
     color: white;
 }
 
 button i {
-    font-size: 23px;
+    font-size: 16px;
 }
 
 .mat-mdc-form-field {
@@ -29,7 +19,7 @@ button i {
     width: 100%;
 }
 
-::ng-deep .danger-tooltip {
+::ng-deep .tooltip {
     --mdc-plain-tooltip-container-color: #C2185B;
     --mdc-plain-tooltip-supporting-text-color: white;
 }
@@ -47,12 +37,7 @@ table {
     text-align: start !important;
 }
 
-::ng-deep .edit-tooltip {
-    --mdc-plain-tooltip-container-color: #C2185B !important;
-    --mdc-plain-tooltip-supporting-text-color: white;
-}
-
-::ng-deep .delete-tooltip {
+::ng-deep .all-tooltip {
     --mdc-plain-tooltip-container-color: #C2185B !important;
     --mdc-plain-tooltip-supporting-text-color: white;
 }

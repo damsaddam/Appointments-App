@@ -22,7 +22,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'scheduler',
+    path: 'scheduler/:appointmenttitle',
     loadChildren: () =>
       import('./scheduler/scheduler.module').then(
         (m) => m.AppointmentsSchedulerModule
